@@ -3,12 +3,12 @@ stages:
   - test
   - docker-ci
 install support for python:
-  image: python
+  image: python:3.11.1-alpine
   stage: install
   script:
   - python --version
 installing requirements file and testing:
-  image: python
+  image: python:3.11.1-alpine
   stage: test
   script: 
   - pip install -r requirements.txt
