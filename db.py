@@ -11,7 +11,7 @@ def add_vendor(supabase,vendor_count):
     fake.add_provider(faker_commerce.Provider)
     main_list = []
     for i in range(vendor_count):
-        value = {'vendor_name':fake.company(),'employee_count':fake.random_int(10,6000),
+        value = {'vendor_name':fake.company(),'employee_count':fake.random_int(10,200),
         'vendor_location':fake.country()}
         print(value)
         main_list.append(value)
@@ -26,7 +26,7 @@ def add_product(supabase,vendor_id):
     fake=Faker()
     fake.add_provider(faker_commerce.Provider)
     main_list = []
-    iterator = fake.random_int(1,15000)
+    iterator = fake.random_int(1,200)
     for i in range(iterator):
         value = {'vendor_id':vendor_id,'product_name':fake.ecommerce_name(),'inventory_count':fake.random_int(1,9000),'pricing':fake.random_int(45,9000)}
         main_list.append(value)
@@ -35,7 +35,7 @@ def add_product(supabase,vendor_id):
     data = supabase.table('Product').insert(main_list).execute()
     print(data)
 def main():
-    vendor_count = 21000
+    vendor_count = 50
     load_dotenv()
     url: str = os.environ.get("SUPABASE_URL")
     key: str = os.environ.get("SUPABASE_KEY")
