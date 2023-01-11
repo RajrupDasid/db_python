@@ -1,0 +1,16 @@
+stages:
+  - install
+  - test
+  - docker-ci
+install support for python:
+  image: python
+  stage: install
+  script:
+  - python --version
+installing requirements file and testing:
+  image: python
+  stage: test
+  script: 
+  - pip install -r requirements.txt
+  - python db.py
+
